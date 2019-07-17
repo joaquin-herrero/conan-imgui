@@ -6,7 +6,7 @@ from conans import ConanFile, CMake, tools
 
 class IMGUIConan(ConanFile):
     name = "imgui"
-    version = "1.69"
+    version = "1.71"
     url = "https://github.com/bincrafters/conan-imgui"
     homepage = "https://github.com/ocornut/imgui"
     description = "Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies"
@@ -42,6 +42,7 @@ class IMGUIConan(ConanFile):
     def package(self):
         self.copy(pattern="LICENSE.txt", dst="licenses", src=self._source_subfolder)
         self.copy(pattern="examples/imgui_impl_*", dst="misc/bindings", src=self._source_subfolder, keep_path=False)
+        self.copy(pattern="misc/cpp/imgui_*", dst="misc/cpp", src=self._source_subfolder, keep_path=False)
         cmake = self._configure_cmake()
         cmake.install()
 
